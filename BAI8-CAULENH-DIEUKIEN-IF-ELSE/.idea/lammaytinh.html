@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+  <style>
+    button{
+      width: 50px;
+      height: 50px;
+      margin: 5px;
+    }
+    input{
+      width: 240px;
+      height: 80px;
+
+    }
+  </style>
+
+</head>
+<body>
+<table>
+    <tr>
+        <th colspan="4"><input id="hien_Thi"></th>
+    </tr>
+    <tr>
+        <td><button onclick="nhan_So(7)">7</button></td>
+        <td><button onclick="nhan_So(8)">8</button></td>
+        <td><button onclick="nhan_So(9)">9</button></td>
+        <td><button onclick="xoa()">AC</button></td>
+    </tr>
+    <tr>
+        <td><button onclick="nhan_So(4)">4</button></td>
+        <td><button onclick="nhan_So(5)">5</button></td>
+        <td><button onclick="nhan_So(6)">6</button></td>
+        <td><button onclick="nhan_So('/')">/</button></td>
+    </tr>
+    <tr>
+        <td><button onclick="nhan_So(1)">1</button></td>
+        <td><button onclick="nhan_So(2)">2</button></td>
+        <td><button onclick="nhan_So(3)">3</button></td>
+        <td><button onclick="nhan_So('*')">x</button></td>
+    </tr>
+    <tr>
+        <td><button onclick="nhan_So(0)">0</button></td>
+        <td><button onclick="bang()">=</button></td>
+        <td><button onclick="nhan_So('+')">+</button></td>
+        <td><button onclick="nhan_So('-')">-</button></td>
+    </tr>
+</table>
+</body>
+</html>
+
+
+<script>
+
+    function xoa() {
+        let hien_ThiB = document.getElementById("hien_Thi");
+        hien_ThiB.value = "";
+    }
+
+    function nhan_So(so) {
+        let hien_ThiB = document.getElementById("hien_Thi");
+        hien_ThiB.value = hien_ThiB.value + so;
+    }
+
+    function bang() {
+        let hien_ThiB = document.getElementById("hien_Thi");
+        let valueB = hien_ThiB.value;
+        hien_ThiB.value = eval(valueB);
+    }
+</script>

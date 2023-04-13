@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+
+</body>
+</html>
+<script>
+  let n = parseInt(prompt("nhap so")); // tổng doanh số bán hàng
+  let tylehoahong;
+  let tienhoahong;
+
+  if (n <= 1000) {
+    tylehoahong = 0.05; // hoa hồng 5% cho doanh số dưới 100 triệu
+  } else if (n > 1000 && n <= 2000) {
+    tylehoahong = 0.07; // hoa hồng 7% cho doanh số từ 100 triệu đến 500 triệu
+  } else {
+    tylehoahong = 0.1; // hoa hồng 10% cho doanh số trên 500 triệu
+  }
+
+  tienhoahong = n * tylehoahong; // tính số tiền hoa hồng nhận được
+
+  alert(tienhoahong) // hiển thị kết quả
+
+
+</script>

@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+</body>
+</html>
+<!--//VIET DO TUOI N NEU TUOI NHAP VAO KHONG HOP LE THI BAT NHAP LAI-->
+<!--//TUOI HOP LE TRONG KHOANG 1-100-->
+<script>
+  let value = null;
+  do {
+      value = prompt("hay nhap tuoi");
+      if(value < 1 || value > 100){
+          alert("Nhap lai trong khoang 1->100")
+      }
+  }
+  while (value < 1 || value > 100);
+
+  alert("ban nhap la " + value);
+
+
+
+
+</script>

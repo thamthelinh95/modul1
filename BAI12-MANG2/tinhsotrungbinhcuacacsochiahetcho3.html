@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+</body>
+</html>
+<script>
+    let arr = [1, 2, 3, 4, 5, 6, 7, 8, 9 , 12]
+    let tong = 0;
+    let dem = 0;
+
+    for (let i = 0; i < arr.length; i++) {
+        if (arr[i] % 3 === 0) {
+            dem++;
+            tong += arr[i]
+        }
+    }
+    let tB = tong / dem;
+
+    document.write(tB)
+
+</script>
