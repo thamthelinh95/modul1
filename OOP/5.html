@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+</head>
+<body>
+
+<img src="gold.png" height="5472" width="3648" id="bia" hidden>
+<canvas id="myCanvas" width="1200" height="620" style="border: 4px solid black">
+
+</canvas>
+</body>
+
+</html>
+
+<script>
+    //tam dung,tiep tuc
+    let checkPause = 0;
+
+    //bien
+    let interval;
+    interval = setInterval(move, 20)
+    let canvas = document.getElementById("myCanvas");
+    let ctx = canvas.getContext("2d");
+    let image0 = document.getElementById("bia");
+    let score = 0;
+    let bg = new Image()
+    bg.src = "anhnen.jpeg"
+    let anh = new Image()
+    anh.src = "1.jpeg"
+    let anhgio = new Image()
+    anhgio.src = "giodungtien.png"
+    let toadomouse = canvas.getBoundingClientRect();
+    let mouse = {
+        x: 700,
+        y: 620,
+    }
+    canvas.addEventListener("mousemove", function (m) {
+        mouse.x = m.x - toadomouse.left;
+    })
+    class Bia {
+        constructor(x, y, image) {
+            this.speed = Math.random() * 2 + 1;
+            this.image0 = image;
+            this.x = x;
+            this.y = y;
+
+        }
+        draw = function () {
+            ctx.drawImage(this.image0, this.x, this.y, 80, 80);
+
+        }
+
+        drop() {
+            this.y += this.speed;
+        }
+    }
+
+    let Bia1 = new Bia(80, 0, image0);
+    let Bia2 = new Bia(300, 0, image0);
+    // let Bia3 = new Bia(600, 0, image0);
+    // let Bia4 = new Bia(200, 0, image0);
+    // let Bia5 = new Bia(350, 0, image0);
+
+    let arr = [Bia1,Bia2,];
+
+    class gio {
+        constructor() {
+            this.x = 50;
+            this.y = 480;
+
+        }
+
+        update() {
+            const ax = this.x - mouse.x; //tao 1 hang so ax co toa do this.x - mouse x
+            if (mouse.x != this.x) {
+                this.x -= ax / 10;
+            }
+            if (this.x < 0) this.x = 0;
+            if (this.x > 500) this.x = 500;
+        }
+    }
+    let gio1 = new gio();
+    function clear() {   //xoa anh cu,ve anh moi
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+    }
+
+    function move() {  // hien thi
+        clear();
+        ctx.drawImage(bg, 0, 0, 700, 620)
+        ctx.drawImage(anh, 700, 0, 500, 620)
+        ctx.drawImage(anhgio, gio1.x, gio1.y, 200, 200)
+        ctx.beginPath();
+        ctx.fillStyle = "white"
+        ctx.fillRect(10,40,90,40)
+        ctx.fillStyle = "orange"
+        ctx.fillText("Pause",10,70);
+        gio1.update()  //thay doi gio
+        for (let i = 0; i < arr.length; i++) {
+            if (arr[i].y + 70 >= 620) {
+                arr[i].y = 10;
+                arr[i].x = Math.random() * 600;
+                isGameOver = true
+                score = 0;
+            }
+            arr[i].drop();
+            arr[i].draw();
+            if ((arr[i].x > gio1.x && arr[i].x < gio1.x + 200) & arr[i].y > gio1.y - 20) { // toa do bia roi vao boong
+                arr[i].y = 0;
+                arr[i].x = Math.random() * 600;
+                score++;
+                if(score === 2 ){
+                    anh.src ='number2.jpeg'
+                }
+                if (score === 4 ){
+                    anh.src = "number3.jpeg"
+                }
+                if (score === 6){
+                    anh.src = "number4.jpeg"
+                }
+                if (score === 8) {
+                    anh.src = "number5.jpeg"
+                }
+                if (score === 10) {
+                    anh.src = "number6.jpeg"
+                }
+                if (score === 12) {
+                    anh.src = "number7.jpeg"
+                }
+                if (score === 14) {
+                    anh.src = "8.jpeg"
+                }
+                if (score === 16) {
+                    anh.src = "9.jpeg"
+                }
+                if (score === 18) {
+                    anh.src = "9.jpg"
+                }
+                if (score === 20) {
+                    anh.src = "10.jpeg"
+                }
+                if (score === 22) {
+                    anh.src = "11.webp"
+                }
+                if (score === 24) {
+                    anh.src = "12.webp"
+                }
+            }
+
+        }
+        ctx.font = "30px Arial"
+        ctx.fillStyle = "orange";
+        ctx.fillText("score:" + score, 10, 30)
+        checkGameOver()
+    }
+    canvas.addEventListener("click", function(event) {    // tamdung
+        const x = event.pageX - canvas.offsetLeft;
+        const y = event.pageY - canvas.offsetTop;
+
+        if (x >= 50 && x <= 100 && y >50 && y<=100  ) {
+            // Thêm các hoạt động để xử lý khi người dùng click vào nút
+            checkPause++
+            if(checkPause % 2 !== 0 ){
+                clearInterval(interval)
+            }
+            else interval = setInterval(move,20)
+
+        }
+    });
+    let isGameOver = false;
+    function checkGameOver() {   // ket thuc game
+        if (isGameOver) {
+            ctx.font = "50px Arial";
+            ctx.fillStyle = "orange";
+            clearInterval(interval);
+            ctx.fillText("Game over", 250, 300);
+        }
+
+    }
+</script>

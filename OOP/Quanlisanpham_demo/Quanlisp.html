@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<h1>Add New Products</h1>
+<input type="text" id="demo" placeholder="new product" >
+<button onclick="" type="button">Add</button>
+<h2>Display All Product</h2>
+<thead>
+<tr>
+  <td>Product Name</td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td>product</td>
+</tr>
+</thead>
+
+</body>
+</html>
+<script>
+  class coffee {
+    name;
+    price;
+    img;
+    constructor(name, price, img) {
+      this.name = name;
+      this.price = price;
+      this.img = img;
+    }
+  }
+  let arabika = new coffee("arabika","22vnd","https://ngoi.co/wp-content/uploads/2021/09/pexels-jamal-yahya-4085266-1306x800.jpg")
+  let robusta= new coffee("robsuta","25vnd","https://ngoi.co/wp-content/uploads/2021/09/pexels-jamal-yahya-4085266-1306x800.jpg")
+  let rangXay = new coffee("rangXay","30vnd","https://ngoi.co/wp-content/uploads/2021/09/pexels-jamal-yahya-4085266-1306x800.jpg")
+  let arr = [arabika,robusta,rangXay];
+</script>

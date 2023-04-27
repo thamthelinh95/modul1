@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>Snake Game</title>
+    <style>
+        canvas {
+            border: 1px solid black;
+        }
+    </style>
+</head>
+<body>
+<canvas id="canvas" width="400" height="400"></canvas>
+<script>
+    // Lấy đối tượng canvas và thiết lập ngữ cảnh vẽ
+    var canvas = document.getElementById("canvas");
+    var ctx = canvas.getContext("2d");
+
+    // Thiết lập kích thước ô vuông và số lượng ô vuông trên mỗi trục
+    var gridSize = 20;
+    var gridWidth = canvas.width / gridSize;
+    var gridHeight = canvas.height / gridSize;
+
+    // Thiết lập đối tượng rắn
+    var snake = {
+        body: [{ x: 5, y: 5 }],
+        direction: { x: 1, y: 0 },
+    };
+
+    // Thiết lập vị trí của thức ăn
+    var food = {
+        x: Math.floor(Math.random() * gridWidth),
+        y: Math.floor(Math.random() * gridHeight),
+    };
+
+    // Vẽ rắn và thức ăn trên canvas
+    function draw() {
+        // Xóa màn hình
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+        // Vẽ rắn
+        ctx.fillStyle = "green";
+        for (var i = 0; i < snake.body.length; i++) {
+            ctx.fillRect(
+                snake.body[i].x * gridSize,
+                snake.body[i].y * gridSize,
+                gridSize,
+                gridSize
+            );
+        }
+
+        // Vẽ thức ăn
+        ctx.fillStyle = "red";
+        ctx.fillRect(
+            food.x * gridSize,
+            food.y * gridSize,
+            gridSize,
+            gridSize
+        );
+    }
+
+    // Cập nhật vị trí của rắn
+    function update() {
+        // Lấy vị trí mới của đầu rắn
+        var head = {
+            x: snake.body[0].x + snake.direction.x,
+            y: snake.body[0].y + snake.direction.y,
+        };
+
+        // Kiểm tra xem rắn đã ăn thức ăn chưa
+        if (head.x === food.x && head.y === food.y) {
+            // Thêm một khối thân mới vào rắn
+            snake.body.push({ x: head.x, y: head.y });
+
+            // Tạo một thức ăn mới
+            food = {
+                x: Math.floor(Math.random() * gridWidth),
+                y: Math.floor(Math.random() * gridHeight),
+            };
+        } else {
+            // Xóa khối đuôi cũ của rắn
+            snake.body.pop();
+
+            // Thêm khối đầu mới vào rắn
+            snake.body.unshift({ x: head.x, y: head.y });
+        }
+
+        // Kiểm tra xem rắn có va chạm vào tường hoặc chính nó không
+        if (
+            head.x < 0 ||
+            head.x >= gridWidth ||
+            head // Vẽ lại canvas và cập nhật trò chơi
+
+
+        // Khởi tạo trò chơi
+        draw();
+
+</script>
+</body>
+</html>
+
+

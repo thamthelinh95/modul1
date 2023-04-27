@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+</body>
+</html>
+<script>
+    let arr = [1, 7, 9, 44, 12, 100, 2];
+    let max = arr[0];
+    let index = 0;
+    for (let i = 1; i < arr.length; i++) {
+        if (arr[i] > max) {
+            max = arr[i];
+            index = i
+        }
+    }
+    alert("so lon nhat la : " + max + " tai vi tri "+ index);
+</script>

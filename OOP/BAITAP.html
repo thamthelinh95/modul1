@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+</body>
+</html>
+<script>
+  // Định nghĩa lớp Car (Xe)
+  class Car {
+    constructor(make, model, year) {
+      this.make = make;
+      this.model = model;
+      this.year = year;
+      this.speed = 0;
+    }
+
+    // Phương thức tăng tốc
+    accelerate(speed) {
+      this.speed += speed;
+    }
+
+    // Phương thức giảm tốc
+    brake(speed) {
+      this.speed -= speed;
+    }
+
+    // Phương thức hiển thị thông tin xe
+    getInfo() {
+      return `Make: ${this.make}, Model: ${this.model}, Year: ${this.year}, Speed: ${this.speed} mph`;
+    }
+  }
+
+  // Tạo một đối tượng car1 thuộc lớp Car
+  const car1 = new Car("Honda", "Civic", 2021);
+
+  // Hiển thị thông tin xe ban đầu
+  console.log(car1.getInfo()); // Make: Honda, Model: Civic, Year: 2021, Speed: 0 mph
+
+  // Tăng tốc độ lên 60 mph và hiển thị thông tin xe
+  car1.accelerate(60);
+  console.log(car1.getInfo()); // Make: Honda, Model: Civic, Year: 2021, Speed: 60 mph
+
+  // Giảm tốc độ xuống 20 mph và hiển thị thông tin xe
+  car1.brake(20);
+  console.log(car1.getInfo()); // Make: Honda, Model: Civic, Year: 2021, Speed: 40 mph
+
+</script>

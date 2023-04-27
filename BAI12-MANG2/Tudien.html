@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+</body>
+</html>
+<script>
+  let tudien = [
+          ['banana','chuoi'],
+          ['apple','tao'],
+          ['orange','cam'],
+  ];
+  function tratu(tucantra){
+    for (let i = 0; i <tudien.length ; i++) {
+      for (let j = 0; j < tudien[i].length; j++) {
+        if (tucantra === tudien[i][j]){
+          if (j === 1){
+            alert(tudien[i][0])
+            break;
+          }
+          alert(tudien[i][1])
+        }
+      }
+    }
+  }
+  tratu(prompt())
+
+
+</script>

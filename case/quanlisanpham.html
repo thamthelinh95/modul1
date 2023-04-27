@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<input id="inPut">
+<button onclick="them()">ok</button>
+<br>
+<input id="eidtsp">
+<button onclick="xacnhansua()">confirmedit</button>
+<table id="taBle">
+
+</table>
+
+</body>
+</html>
+<script>
+    let arr = ['honda', 'bmw', 'kia', 'mazda']
+
+    hienthi()
+
+    function hienthi() {
+        let str = "";
+        for (let i = 0; i < arr.length; i++) {
+            str += "<tr>\n" +
+                "                <td> " + arr[i] + "</td>\n" +
+                "                <td><button onclick='sua(" + i + ")'>edit</button></td>\n" +
+                "                <td><button onclick='xoa(" + i + ")'>delete</button></td>\n" +
+                "            </tr>"
+        }
+        document.getElementById("taBle").innerHTML = str;
+    }
+
+    function them() {
+        let input = document.getElementById("inPut").value;
+        arr.push(input)
+        hienthi()
+        document.getElementById("inPut").value = "";
+    }
+
+    function sua(i) {
+        document.getElementById("eidtsp").value = arr[i]
+        nho = i
+
+
+    }
+
+    let nho = 0
+
+    function xacnhansua(i) {
+        let xacnhan = document.getElementById("eidtsp").value;
+        arr[nho] = xacnhan;
+        hienthi()
+
+
+    }
+
+    function xoa(i) {
+        let arr1 = []
+        for (let j = 0; j < arr.length; j++) {
+            if (i !== j) {
+                arr1.push(arr[j]);
+            }
+        }
+        arr = arr1
+        alert(arr1)
+        hienthi()
+    }
+</script>
